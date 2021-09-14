@@ -1,4 +1,4 @@
-# osquery_hunting_rules
+# osquery Threat Hunting Rules
 osquery threat hunting queries
 
 It has hunting queries (osquery) that will help cyber threat investigator to identify suspicious/malicious activities using osquery. 
