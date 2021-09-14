@@ -1,0 +1,580 @@
+{
+  "platform": "windows",
+  "queries": {
+    "TaskManager-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' and key='DisableTaskMgr' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+	  "removed": false ,
+      "description" : "Task Manager in Windows Disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"TaskManager-Disabled.2": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' and key='DisableTaskMgr' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+	  "removed": false ,
+      "description" : "Task Manager in Windows Disabled",
+      "value" : "Activity associated with malware presence"
+    },
+    "CryptSVC-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\CryptSvc' and key='Start' and data='4';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Cryptographic Services in Windows Disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"RegistryTools-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' and key='DisableRegistryTools' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Regitry tool in Windows Disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"SecurityCenter-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Security Center' and ((key='UpdatesDisableNotify' and data='1') or (key='FirewallDisableNotify' and data='1') or (key='AntiVirusDisableNotify' and data='1')) ;",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Security Center service notifications is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinShell-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' and key='Shell' and data!='explorer.exe';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows shell is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"IEConnectionsTab-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Control Panel' and key='ConnectionsTab' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows shell is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"IEConnectionsTab-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Control Panel' and key='ConnectionsTab' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are prevented from accessing the Connections tab in Internet Explorer",
+      "value" : "Activity associated with malware presence"
+    },
+	"ChromeUpdates-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Google\\Update' and key='DisableAutoUpdate' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Auto updates of the Google Chrome browser are disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinCMD-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Policies\\Microsoft\\Windows\\System' and key='DisableCMD' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are prevented from accessing the command prompt in Windows",
+      "value" : "Activity associated with malware presence"
+    },
+	"IERightClick-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Restrictions' and key='NoBrowserContextMenu' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : " Internet Explorer context menu (right-click shortcut menu) is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinRightClick-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoBrowserContextMenu' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows context menu (right-click shortcut menu) is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinRightClick-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoBrowserContextMenu' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows context menu (right-click shortcut menu) is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinProperties-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoPropertiesMyComputer' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Prevents the user from accessing System Properties via My Computer as well as via Control Panel",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinProperties-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoPropertiesMyComputer' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows System Properties is disabled",
+      "value" : "Activity associated with malware presence"
+    },	
+	"WinRecycle-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoRecycleFiles' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Recyle of files and folder is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinRecycle-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoRecycleFiles' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Recyle of files and folder is disabled",
+      "value" : "Activity associated with malware presence"
+    },	
+	"WinControlPanel-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='showControlPanel' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Display of Windows Control Panel is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinHelp-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='Start_ShowHelp' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Help item from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinHelp-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='Start_ShowHelp' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Help item from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinMyComputer-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='Start_ShowMyComputer' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "My Computer from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinMyDocuments-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='Start_ShowMyDocs' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows My Documents from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinRun-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='Start_ShowRun' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Run dialog box from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinSearch-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='Start_ShowSearch' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Search dialog box from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinLogOff-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='StartMenuLogOff' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Log Off option from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinLogOff-Hide.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced' and key='StartMenuLogOff' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Log Off option from Windows start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"WinExecution-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun' and key!='' and data!='';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Execution of specific computer programs is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinShowHiddenFolder-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Folder\\Hidden\\SHOWALL' and key='CheckedValue' and data!='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are prevented from finding hidden files and folders",
+      "value" : "Activity associated with malware presence"
+    },
+	"Drive-Hide": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoViewOnDrive' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are restricted from accessing files in partition drives",
+      "value" : "Activity associated with malware presence"
+    },	
+	"WinExplorerClose-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoClose' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Close option in Windows explorer is disabled",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinPowerBtn-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Power' and key='CsEnabled' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Shutdown option in Windows is disabled",
+      "value" : "Activity associated with malware presence"
+    },	
+	"WinDisableActiveDesktop-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='ForceActiveDesktopOn' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are prevented from disabling the Windows Active Desktop",
+      "value" : "Activity associated with malware presence"
+    },
+	"WinDesktop-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoDesktop' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Icons, shortcuts, and other user defined items are removed from the Windows desktop",
+      "value" : "Activity associated with malware presence"
+    },
+	"MSOutlook-LowRiskFiletype": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies' and key='Associations' and data='LowRiskFileTypes=*.exe;*';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Allows attachment of executable files on Microsoft Outlook",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSDefender-ProcExclusion": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Processes' and key!='' and data!='';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Excludes process from Microsoft Defender scan",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSDefender-ExtExclusion.1": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows Defender\\Exclusions\\Extensions' and key!='' and data!='';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Excludes Extension from Microsoft Defender scan",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSAntiMalware-ExtExclusion": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Antimalware\\Exclusions\\Processes' and key!='' and data!='';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Excludes Process from Microsoft AntiMalware scan",
+      "value" : "Activity associated with malware presence"
+    },
+	"MSAntiMalware-ExtExclusion.1": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Antimalware\\Exclusions\\Extensions' and key!='' and data!='';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Excludes Extension from Microsoft AntiMalware scan",
+      "value" : "Activity associated with malware presence"
+    },	
+	"ModifyWallpaper-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\activedesktop' and key='NoChangingWallpaper' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are restricted from changing their system’s wallpaper",
+      "value" : "Activity associated with malware presence"
+    },	
+	"ModifyWallpaper-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\ActiveDesktop' and key='NoChangingWallpaper' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are restricted from changing their system’s wallpaper",
+      "value" : "Activity associated with malware presence"
+    },	
+	"ChangeDispSettings-Disabled": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' and key='NoDispAppearancePage' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Users are prevented from changing their display settings",
+      "value" : "Activity associated with malware presence"
+    },	
+	"BackgroundOpt-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' and key='NoDispBackgroundPage' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Background tab from the Display Settings in Control Panel is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"PartDrives-Hide": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoDrives' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Icons representing drives from My Computer and Windows Explorer are removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Search-Hide": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoFind' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Search menu from the Start Menu is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Search-Hide.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoFind' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Search menu from the Start Menu is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"SetFolders-Hide": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoSetFolders' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Control Panel, Printers, and Network and Dial-Up Connections icons from Settings on the Start menu, My Computer, and Windows Explorer are removed",
+      "value" : "Activity associated with malware presence"
+    },	 
+	"SetFolders-Hide.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoSetFolders' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Control Panel, Printers, and Network and Dial-Up Connections icons from Settings on the Start menu, My Computer, and Windows Explorer are removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Run-Hide": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoRun' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Run command from the Windows Start Menu and the New Task (Run) command from the Task Manager are removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Run-Hide.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoRun' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Run command from the Windows Start Menu and the New Task (Run) command from the Task Manager are removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"SetActiveDesktop-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoSetActiveDesktop' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Active-Desktop option from Settings in the Start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"SetActiveDesktop-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoSetActiveDesktop' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Active-Desktop option from Settings in the Start menu is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"StartMenu-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoSMHelp' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Start Menu is removed",
+      "value" : "Activity associated with malware presence"
+    },
+	"StartMenu-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoSMHelp' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows Start Menu is removed",
+      "value" : "Activity associated with malware presence"
+    },	
+	"StartAllPrograms-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoStartMenuMorePrograms' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Hides all the items under All Programs in the Windows start menu",
+      "value" : "Activity associated with malware presence"
+    },
+	"StartAllPrograms-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoStartMenuMorePrograms' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Hides all the items under All Programs in the Windows start menu",
+      "value" : "Activity associated with malware presence"
+    },	
+	"ViewDrive-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer' and key='NoViewOnDrive' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "All partition drives are hidden from the user",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Proxy-Hijack": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings' and key='ProxyServer' and data LIKE '127.0.0.1:%';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "proxy server address setting is set to redirect Web requests back to 127.0.0.1",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Proxy-Hijack.1": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings' and key='ProxyServer' and data LIKE '127.0.0.1:%';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "proxy server address setting is set to redirect Web requests back to 127.0.0.1",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Proxy-Hijack.2": {
+      "query" : "select * from registry where path='HKEY_USERS\\%\\System\\CurrentControlSet\\Services\\NlaSvc\\Parameters\\Internet\\ManualProxies' and key='ProxyServer' and data LIKE '127.0.0.1:%';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "proxy server address setting is set to redirect Web requests back to 127.0.0.1",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Proxy-Hijack.3": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\NlaSvc\\Parameters\\Internet\\ManualProxies' and key='ProxyServer' and data LIKE '127.0.0.1:%';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "proxy server address setting is set to redirect Web requests back to 127.0.0.1",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Winlogon-Hijack": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon' and key='Userinit' and data NOT LIKE '%:\\Windows\\system32\\userinit.exe';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Winlogon UserInit setting used to auto start potentially malicious file",
+      "value" : "Activity associated with malware presence"
+    },	
+	"SysRestoreConfig-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\SystemRestore' and key='DisableConfig' and data!='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Configuration option for System Restore on the System Protection is disabled",
+      "value" : "Activity associated with malware presence"
+    },	
+	"UAC-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System' and key='EnableLUA' and data='0';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "User Account Control (UAC) is disabled",
+      "value" : "Activity associated with malware presence"
+    },		
+	"MSSecCenterMon-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Security Center' and key='DisableMonitoring' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Microsoft Security Center monitoring disabled notification blocked",
+      "value" : "Activity associated with malware presence"
+    },
+	"UACDisableNotify-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Security Center' and key='UacDisableNotify' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows User Account Control (UAC) disabled notification blocked",
+      "value" : "Activity associated with malware presence"
+    },	
+	"SystemRestore-Disabled": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore' and key='DisableSR' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows system restore disabled",
+      "value" : "Activity associated with malware presence"
+    },	
+	"SystemRestore-Disabled.1": {
+      "query" : "select * from registry where path='HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\SystemRestore' and key='DisableSR' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Windows system restore disabled",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSOutlookSec-Lowered": {
+      "query" : "select * from registry where path LIKE 'HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Office\\%\\Outlook\\Security' and key='Level' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Microsoft Outlook security level is lowered",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSAccessSec-Lowered": {
+      "query" : "select * from registry where path LIKE 'HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Office\\%\\Access\\Security' and key='Level' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Microsoft Access security level is lowered",
+      "value" : "Activity associated with malware presence"
+    },		
+	"MSExcelSec-Lowered": {
+      "query" : "select * from registry where path LIKE 'HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Office\\%\\Excel\\Security' and key='Level' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Microsoft Excel security level is lowered",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSPowerPointSec-Lowered": {
+      "query" : "select * from registry where path LIKE 'HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Office\\%\\PowerPoint\\Security' and key='Level' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Microsoft PowerPoint security level is lowered",
+      "value" : "Activity associated with malware presence"
+    },	
+	"MSWordSec-Lowered": {
+      "query" : "select * from registry where path LIKE 'HKEY_USERS\\%\\SOFTWARE\\Microsoft\\Office\\%\\Word\\Security' and key='Level' and data='1';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Microsoft Word security level is lowered",
+      "value" : "Activity associated with malware presence"
+    },	
+	"Shadowcopy-Removal": {
+      "query" : "SELECT * FROM processes WHERE LOWER(cmdline) LIKE '%vssadmin delete shadows %' or LOWER(cmdline) LIKE '%vssadmin.exe delete shadows %';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Deletes shadow copies",
+      "value" : "Activity associated with Ransomware presence"
+    },		
+	"Backup-Removal": {
+      "query" : "SELECT * FROM processes WHERE LOWER(cmdline) LIKE '%wbadmin delete systemstatebackup %' or LOWER(cmdline) LIKE '%wbadmin.exe delete systemstatebackup %' ;",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Deletes the system state backups",
+      "value" : "Activity associated with Ransomware presence"
+    },			
+	"Shadowcopy-Removal.wmi": {
+      "query" : "SELECT * FROM processes WHERE LOWER(cmdline) LIKE '%wmic.exe shadowcopy delete %' or LOWER(cmdline) LIKE '%wmic shadowcopy delete %';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Deletes shadow copies",
+      "value" : "Activity associated with Ransomware presence"
+    },	
+	"AutoRepair-Disabled": {
+      "query" : "SELECT * FROM processes WHERE LOWER(cmdline) LIKE '%bcdedit.exe /set {default} recoveryenabled no %' or LOWER(cmdline) LIKE  '%bcdedit /set {default} recoveryenabled no %';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Automatic Repair Disabled",
+      "value" : "Activity associated with Ransomware presence"
+    },	
+	"AutoRepair-Disabled.1": {
+      "query" : "SELECT * FROM processes WHERE LOWER(cmdline) LIKE '%bcdedit.exe /set {default} bootstatuspolicy ignoreallfailures %' or LOWER(cmdline) LIKE  '%bcdedit /set {default} bootstatuspolicy ignoreallfailures %';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Automatic Repair Disabled",
+      "value" : "Activity associated with Ransomware presence"
+    },
+	"Suspicious-Ransomware.Locked": {
+      "query" : "SELECT * FROM file WHERE LOWER(filename) LIKE '%.jpeg.%' and LOWER(filename) LIKE '%.txt.%' and LOWER(filename) LIKE '%.pdf.%';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Ransomware encrypted files",
+      "value" : "Activity associated with Ransomware presence"
+    },	
+	"Traces-SelfDelete": {
+      "query" : "SELECT * FROM processes WHERE LOWER(cmdline) LIKE '% /c del /a /f %';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Automatic Repair Disabled",
+      "value" : "Activity associated with Ransomware presence"
+    },
+	"Suspicious-Trojan": {
+      "query" : "SELECT * FROM file WHERE filename LIKE '% .exe';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "No file name executable",
+      "value" : "Activity associated with Malware"
+    },
+	"Suspicious-Trojan.Windows": {
+      "query" : "SELECT * FROM file WHERE (filename='explorer.exe' AND path NOT LIKE ':\\Windows') or (filename='iexplore.exe' AND path NOT LIKE '%\Internet Explorer\%';",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Malware file name like OS files",
+      "value" : "Activity associated with Malware"
+    },
+	"Suspicious-Trojan.System32": {
+      "query" : "SELECT * FROM file WHERE path NOT LIKE ':\\Windows\\System32' AND (LOWER(filename)='csrss.exe' or LOWER(filename)='wininit.exe' or LOWER(filename)='winload.exe' or LOWER(filename)='winlogon.exe' or LOWER(filename)='svhost.exe' or LOWER(filename)='msconfig.exe' or LOWER(filename)='calc.exe' or LOWER(filename)='msconfig.exe' or LOWER(filename)='mmc.exe' or LOWER(filename)='shrpubw.exe' or LOWER(filename)='shrpubw.exe' or LOWER(filename)='calc.exe' or LOWER(filename)='recdisc.exe' or LOWER(filename)='mblctr.exe' or LOWER(filename)='msdtc.exe' or LOWER(filename)='chkdsk.exe' or LOWER(filename)='cleanmgr.exe' or LOWER(filename)='lsass.exe' or LOWER(filename)='lsass.exe' or LOWER(filename)='wuauclt.exe' or LOWER(filename)='smss.exe');",
+      "interval" : "21600",
+	  "version": "2.2.1",
+      "description" : "Malware file name like OS files",
+      "value" : "Activity associated with Malware"
+    }
+}}
